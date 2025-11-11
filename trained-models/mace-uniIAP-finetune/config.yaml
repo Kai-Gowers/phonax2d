@@ -1,0 +1,31 @@
+E0s: null
+cutoff: 5.0
+dataset:
+  loader_seed: 5678
+  n_edge: 32768
+  n_graph: 128
+  n_node: 4096
+  seed: 1234
+  train_num: 13680
+  train_path: training-data/IFC_train_ver1.xyz
+  valid_num: 6080
+  valid_path: training-data/IFC_valid_ver1.xyz
+initialization:
+  path: null
+  reload: 2023-08-21-11:53-debug_mace_uniIAP_v1-delicious-billy
+  seed: 0
+model:
+  alpha: 0.1
+  num_layers: 2
+  num_species: 100
+  seed: 777
+training:
+  ema_decay: 0.999
+  energy_weight: 10.0
+  forces_weight: 70.0
+  learning_rate: 0.001
+  max_num_intervals: 300
+  patience: 3000
+  steps_per_interval: 2000
+  stress_weight: 0.0
+zs: null

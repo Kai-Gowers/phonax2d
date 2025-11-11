@@ -1,0 +1,30 @@
+E0s: null
+cutoff: 5.0
+dataset:
+  loader_seed: 5678
+  n_edge: 32768
+  n_graph: 128
+  n_node: 4096
+  seed: 1234
+  train_num: 182562
+  train_path: training-data/uniIAP_filtered_forceF5cutoff_stress.xyz
+  valid_fraction: 0.03
+  valid_num: 5500
+initialization:
+  seed: 0
+model:
+  alpha: 0.1
+  internal_irreps: 128x0e+ 128x0o  + 64x1e +64x1o +64x2e +64x2o
+  num_layers: 2
+  num_species: 100
+  seed: 777
+training:
+  ema_decay: 0.999
+  energy_weight: 10.0
+  forces_weight: 70.0
+  learning_rate: 0.003
+  max_num_intervals: 200
+  patience: 3000
+  steps_per_interval: 3000
+  stress_weight: 0.0
+zs: null

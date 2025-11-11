@@ -1,0 +1,52 @@
+---
+cutoff: 5.0
+zs: null  # Infers from dataset
+E0s: null  # Infers from dataset
+
+
+dataset:
+  train_path: data/propane/propane_force_N4.xyz
+  valid_path: data/propane/propane_v2_mesh_PBE_force.xyz
+  train_num : 40
+  valid_num: 9610
+  n_node: 256
+  n_edge: 2048
+  n_graph: 10
+  seed: 7
+  loader_seed: 5678
+  valid_fraction: null
+  valid_num_graphs: 100
+  
+ph_dataset:
+  train_path: data/propane/propane_hessian_N4.xyz
+  train_num: 4356
+  valid_path: data/propane/propane_hessian_N4.xyz
+  valid_num: 1000
+  n_node: 500 
+  n_edge: 4000
+  n_graph: 96
+
+model:
+  #normalization_constant: 8.0
+  num_layers: 2
+  internal_irreps: 24x0e+24x0o+12x1e+12x1o+8x2e+8x2o   # 64x0e+ 64x0o + 48x1e +48x1o +32x2e +32x2o
+  alpha: 0.1
+  seed: 777
+  num_species: 100
+
+training:
+  learning_rate: 0.01
+  steps_per_interval: 500
+  max_num_intervals: 20
+  warmup_num_intervals: 10
+  phtrain_num_intervals: 15
+  ema_decay: 0.99
+  patience: 3000
+  energy_weight: 10.0
+  forces_weight: 70.0
+  stress_weight: 0.0
+
+initialization:
+  seed: 0
+  #path: null
+  #reload: 

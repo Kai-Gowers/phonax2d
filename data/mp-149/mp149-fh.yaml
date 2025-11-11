@@ -1,0 +1,52 @@
+---
+cutoff: 5.0
+zs: null  # Infers from dataset
+E0s: null  # Infers from dataset
+
+dataset:
+  train_path: data/mp-149/mp-149-SC111_train.xyz
+  valid_path: data/mp-149/mp-149-SC333_valid.xyz
+  train_num : 1000
+  valid_num: 200
+  n_node: 1500
+  n_edge: 9000
+  n_graph: 128
+  seed: 7
+  loader_seed: 5678
+  valid_fraction: null
+  valid_num_graphs: 100
+  
+ph_dataset:
+  train_path: data/mp-149/SRmp-149-train-randomu.xyz
+  train_num: 2000
+  valid_path: data/mp-149/SRmp-149-valid-randomu.xyz
+  valid_num: 100
+  n_node: 700 
+  n_edge: 4000
+  n_graph: 96
+
+model:
+  #normalization_constant: 8.0
+  num_layers: 2
+  internal_irreps: 16x0e + 16x0o +12x1e + 12x1o + 8x2e +8x2o   #64x0e + 64x0o + 48x1o + 48x1e +32x2o + 32x2e
+  alpha: 0.1
+  seed: 777
+  num_species: 100
+
+training:
+  learning_rate: 0.01
+  steps_per_interval: 500
+  max_num_intervals: 15
+  ema_decay: 0.99
+  patience: 3000
+  energy_weight: 10.0
+  forces_weight: 70.0
+  stress_weight: 0.0
+  warmup_num_intervals: 10
+  phtrain_num_intervals: 15
+  hessian_mixing_ratio: 0.5
+
+initialization:
+  seed: 0
+  #path: null
+  #reload: 
