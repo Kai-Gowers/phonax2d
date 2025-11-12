@@ -1,3 +1,0 @@
-nequip_jax @ git+https://github.com/mariogeiger/nequip-jax
-posym @ git+https://github.com/abelcarreras/posym
-pointgroup @ git+https://github.com/abelcarreras/pointgroup
