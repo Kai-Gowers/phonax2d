@@ -48,14 +48,31 @@ def contraction_vector(r, i, k, u):
 def sign_sqrt(x):
     return jnp.sign(x) * jnp.sqrt(jnp.abs(x))
 
+
+# Adapted for 2D materials
 def atoms_to_ext_graph(
     atoms: ase.Atoms, cutoff: float, num_message_passing: int
 ) -> jraph.GraphsTuple:
+    
+    # Force 2d periodicity
+    # pbc2d = (True, True, False)
+    
+    if tuple(atoms.pbc) != (True, True, False):
+        raise ValueError(
+            f"atoms_to_ext_graph expects 2D PBC [True, True, False], "
+            f"got {atoms.pbc}"
+        )
+    
+    # Give ourselves a tall vacuum in z so periodic padding won’t wrap in z
+    cell = atoms.cell.array.copy()
+    if cell[2, 2] < 3 * cutoff: 
+        cell[2, 2] = 3 * cutoff
+    
     senders, receivers, senders_unit_shifts = get_neighborhood(
         positions=atoms.positions,
         cutoff=cutoff,
         pbc=atoms.pbc,
-        cell=atoms.cell.array,
+        cell=cell,
     )
 
     num_atoms = len(atoms)
